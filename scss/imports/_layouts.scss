@@ -1,0 +1,100 @@
+  
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1440px;
+    //box-sizing: border-box;
+    margin: 0 auto; //keep an eye on this
+    padding: 125px 11% 0; //11% is 165px when the screen is 1440px
+    
+    section.text, section.form-container {
+        flex:1;
+    }
+    
+    section.text {
+        h1 {
+            font-size: 50px;
+            line-height: 55px;
+        }
+        
+        p {
+            font-size: 16px;
+            line-height: 26px;
+        }
+    }
+    
+    section.form-container {
+        padding-left: 15px;
+        
+        .offer, .form {
+            border-radius: 10px;
+        }
+        .offer {
+            background-color: $color-purple;
+            color:#fff;
+            padding: 14px 31px;
+            margin: 0 0 20px 0;
+        }
+        
+        .form {
+            padding: 40px;
+            background-color: #fff;
+            text-align: center;
+            
+            
+            input, button {
+                width: 100%;
+                border: 1px solid $color-gray;
+                padding: 14px 31px;
+                box-sizing: border-box;
+                border-radius: 5px;
+            }
+            
+            input {
+                line-height: 26px;
+                margin-bottom:20px;
+            }
+            
+            button {
+                text-transform:uppercase;
+                background-color: $color-green;
+                color:#fff;
+                margin-bottom:10px;
+                border: none;
+                
+                &:hover {
+                    padding: 14px 31px;
+                    cursor: pointer;
+                    background-color: lighten($color-green, 10%);
+                }
+            }
+            
+            .terms {
+                font-size:11px;
+                line-height: 26px;
+            }
+        }
+    }
+    
+    .text {
+        color:#fff;
+    }
+}
+
+
+.color-red {
+    color:$color-red;
+}
+
+.color-gray {
+    color:$color-gray;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-bold {
+    font-weight: 700;
+}
