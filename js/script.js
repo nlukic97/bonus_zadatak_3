@@ -70,6 +70,10 @@ function validateInputs(inputQuerySelector,submitData){
 
 // This method is called for each error to decide whether to show the error message or not
 function handleErrorMessage(inputSelector,action,message){
+    if(action != 'add' && action != 'remove'){
+        console.warn('Warning: handleErrorMessage only accepts "add" or "remove" as arguments.');
+        return
+    }
     let inputNode = document.querySelector(inputSelector)
     let textErrorNode = inputNode.parentNode.querySelector('.error-message span') //this will get the span that containts the error message
 
