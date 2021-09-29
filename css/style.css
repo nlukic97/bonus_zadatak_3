@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: url("../images/bg-intro-desktop.png") repeat top left, #FF7979;
+}
+body .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body .container section.text, body .container section.form {
+  flex: 1;
+}
+body .container section.form .offer {
+  background-color: #5E54A4;
+  color: #fff;
+}
+body .container section.form form {
+  padding: 0 1rem;
+  background-color: #fff;
+  background-color: orange;
+  text-align: center;
+}
+body .container section.form form input, body .container section.form form button {
+  margin: 0 auto;
+  width: 100%;
+  border: none;
+}
+body .container section.form form input {
+  margin: 1rem 0;
+}
+body .container section.form form button {
+  text-transform: uppercase;
+  background-color: #38CC8B;
+  color: #fff;
+}
+body .container .text {
+  color: #fff;
+}
+
+.color-red {
+  color: #FF7979;
+}
+
+.color-gray {
+  color: #BAB7D4;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.border-radius {
+  border-radius: 5px;
+}
+
+/*# sourceMappingURL=style.css.map */
