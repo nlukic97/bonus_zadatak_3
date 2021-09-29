@@ -64,10 +64,13 @@
 
                 .error-message {
                     position: absolute;
-                    top: 17px;
+                    height: 26px;
+                    top: 16px;
                     right: 0;
-                    padding-right: 10px;
+                    padding-right: 40px;
                     display: none;
+                    background: url('../images/icon-error.svg') no-repeat center right 10px/contain;
+                    background-size: 23px 23px;
                 }
             }
             
