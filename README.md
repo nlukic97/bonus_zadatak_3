@@ -1,7 +1,7 @@
 # Bonus zadatak 3 - Nikola Lukic
 
 ## Production url:
-- https://bonus-zadatak-3-nlukic97.vercel.app/
+- https://bonus-zadatak-3-gamma.vercel.app/
 
 ---
 
