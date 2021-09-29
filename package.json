@@ -1,0 +1,23 @@
+{
+  "name": "bonus_zadatak_3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cpomile:sass": "sass scss/main.scss css/style.css -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nlukic97/bonus_zadatak_3.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nlukic97/bonus_zadatak_3/issues"
+  },
+  "homepage": "https://github.com/nlukic97/bonus_zadatak_3#readme",
+  "dependencies": {
+    "sass": "^1.42.1"
+  }
+}
