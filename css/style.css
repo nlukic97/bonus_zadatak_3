@@ -51,9 +51,22 @@ body {
   box-sizing: border-box;
   border-radius: 5px;
 }
-.container section.form-container .form input {
+.container section.form-container .form .input-container {
+  position: relative;
+}
+.container section.form-container .form .input-container input {
   line-height: 26px;
   margin-bottom: 20px;
+}
+.container section.form-container .form .input-container input.show-error ~ .error-message {
+  display: block;
+}
+.container section.form-container .form .input-container .error-message {
+  position: absolute;
+  top: 17px;
+  right: 0;
+  padding-right: 10px;
+  display: none;
 }
 .container section.form-container .form button {
   text-transform: uppercase;
@@ -94,6 +107,7 @@ body {
 @media screen and (max-width: 859px) {
   .container {
     flex-direction: column;
+    align-items: unset;
   }
   .container section.form-container {
     padding-left: 0;

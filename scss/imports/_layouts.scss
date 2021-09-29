@@ -51,9 +51,24 @@
                 border-radius: 5px;
             }
             
-            input {
-                line-height: 26px;
-                margin-bottom:20px;
+            .input-container {
+                position: relative;
+                input {
+                    line-height: 26px;
+                    margin-bottom:20px;
+
+                    &.show-error ~ .error-message {
+                        display: block;
+                    }
+                }
+
+                .error-message {
+                    position: absolute;
+                    top: 17px;
+                    right: 0;
+                    padding-right: 10px;
+                    display: none;
+                }
             }
             
             button {
