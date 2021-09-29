@@ -10,32 +10,36 @@ body .container {
   display: flex;
   align-items: center;
   justify-content: center;
+  max-width: 1440px;
+  margin: 100px auto 0;
 }
-body .container section.text, body .container section.form {
+body .container section.text, body .container section.form-container {
   flex: 1;
 }
-body .container section.form .offer {
+body .container section.form-container .offer {
   background-color: #5E54A4;
   color: #fff;
 }
-body .container section.form form {
+body .container section.form-container .form {
   padding: 0 1rem;
   background-color: #fff;
-  background-color: orange;
   text-align: center;
 }
-body .container section.form form input, body .container section.form form button {
+body .container section.form-container .form input, body .container section.form-container .form button {
   margin: 0 auto;
   width: 100%;
-  border: none;
+  border: 1px solid #BAB7D4;
 }
-body .container section.form form input {
+body .container section.form-container .form input {
   margin: 1rem 0;
 }
-body .container section.form form button {
+body .container section.form-container .form button {
   text-transform: uppercase;
   background-color: #38CC8B;
   color: #fff;
+}
+body .container section.form-container .form button:hover {
+  cursor: pointer;
 }
 body .container .text {
   color: #fff;
@@ -53,7 +57,7 @@ body .container .text {
   text-align: center;
 }
 
-.bold {
+.text-bold {
   font-weight: 700;
 }
 

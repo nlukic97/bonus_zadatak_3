@@ -19,17 +19,21 @@
     </section>
 
     <!-- right box -->
-    <section class="form">
-      <p class="offer text-center border-radius"><span class="bold">Try it free 7 days</span> then $20/mo. thereafter</p>
+    <section class="form-container">
+      <p class="offer text-center border-radius"><span class="text-bold">Try it free 7 days</span> then $20/mo. thereafter</p>
       
-      <form action="#" method="POST">
-        <input type="text" name="name" id="name">
-        <input type="text" name="lastname" id="lastname">
-        <input type="email" name="email" id="email">
-        <input type="password" name="password" id="password">
-        <button type="submit">Claim your free trial</button>
-        <span class="terms bold color-gray text-center">By clicking the button, you are agreeing to our <span class="color-red">Terms and Services</span></span>
-      </form>
+      <!-- form will not  submit because of last attribute in form tag -->
+      <div class="form border-radius">
+        <input type="text" name="name" id="name" placeholder="First Name">
+        <input type="text" name="lastname" id="lastname" placeholder="Last Name">
+        <input type="email" name="email" id="email" placeholder="Email Address">
+        <input type="password" name="password" id="password" placeholder="Password">
+
+        <button id="submit-btn" class="text-bold">Claim your free trial</button>
+
+        <span class="terms color-gray text-center">By clicking the button, you are agreeing to our <span class="color-red  text-bold">Terms and Services</span></span>
+      </div>
+
     </section>
 
   </div>
