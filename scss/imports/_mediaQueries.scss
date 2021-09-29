@@ -1,0 +1,9 @@
+@media screen and (max-width:859px) {
+    .container {
+        flex-direction: column;
+
+        section.form-container {
+            padding-left: 0;
+        }
+    }
+}

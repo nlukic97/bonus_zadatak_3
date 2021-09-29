@@ -5,43 +5,73 @@
 
 body {
   background: url("../images/bg-intro-desktop.png") repeat top left, #FF7979;
+  font-family: "Poppins", sans-serif;
 }
-body .container {
+
+.container {
   display: flex;
   align-items: center;
   justify-content: center;
   max-width: 1440px;
-  margin: 100px auto 0;
+  margin: 0 auto;
+  padding: 125px 11% 0;
 }
-body .container section.text, body .container section.form-container {
+.container section.text, .container section.form-container {
   flex: 1;
 }
-body .container section.form-container .offer {
+.container section.text h1 {
+  font-size: 50px;
+  line-height: 55px;
+}
+.container section.text p {
+  font-size: 16px;
+  line-height: 26px;
+}
+.container section.form-container {
+  padding-left: 15px;
+}
+.container section.form-container .offer, .container section.form-container .form {
+  border-radius: 10px;
+}
+.container section.form-container .offer {
   background-color: #5E54A4;
   color: #fff;
+  padding: 14px 31px;
+  margin: 0 0 20px 0;
 }
-body .container section.form-container .form {
-  padding: 0 1rem;
+.container section.form-container .form {
+  padding: 40px;
   background-color: #fff;
   text-align: center;
 }
-body .container section.form-container .form input, body .container section.form-container .form button {
-  margin: 0 auto;
+.container section.form-container .form input, .container section.form-container .form button {
   width: 100%;
   border: 1px solid #BAB7D4;
+  padding: 14px 31px;
+  box-sizing: border-box;
+  border-radius: 5px;
 }
-body .container section.form-container .form input {
-  margin: 1rem 0;
+.container section.form-container .form input {
+  line-height: 26px;
+  margin-bottom: 20px;
 }
-body .container section.form-container .form button {
+.container section.form-container .form button {
   text-transform: uppercase;
   background-color: #38CC8B;
   color: #fff;
+  margin-bottom: 10px;
+  border: none;
 }
-body .container section.form-container .form button:hover {
+.container section.form-container .form button:hover {
+  padding: 14px 31px;
   cursor: pointer;
+  background-color: #61d6a3;
 }
-body .container .text {
+.container section.form-container .form .terms {
+  font-size: 11px;
+  line-height: 26px;
+}
+.container .text {
   color: #fff;
 }
 
@@ -61,8 +91,13 @@ body .container .text {
   font-weight: 700;
 }
 
-.border-radius {
-  border-radius: 5px;
+@media screen and (max-width: 859px) {
+  .container {
+    flex-direction: column;
+  }
+  .container section.form-container {
+    padding-left: 0;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
