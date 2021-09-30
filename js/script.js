@@ -1,11 +1,19 @@
+var inputListenersSet = false;
+
 document.getElementById('submit-btn').addEventListener('click',function(){
-    addInput_EventListeners('.form input')
-    validateInputs('.form input',true) //validate inputs, and submit (true flag)
+
+    //we only want to set the input listeners once upon the first form submission
+    if(inputListenersSet === false){ 
+        addInput_EventListeners('.form input')
+        inputListenersSet = true;
+    }
+
+    validateInputs('.form input',true) //validate inputs, and submit - 'true' flag
 })
 
-//make object with input name is the key, and input value as the value
-function getNodeValues(inputQuerySelector){
-    let inputs =  document.querySelectorAll(inputQuerySelector)
+//return object with input name is the key, and input value as the value
+function getNodeValues(inputsQuerySelector){
+    let inputs =  document.querySelectorAll(inputsQuerySelector)
     
     return Object.keys(inputs).reduce(function(acc,key){
         let objKey = inputs[key].getAttribute('name')
@@ -16,10 +24,10 @@ function getNodeValues(inputQuerySelector){
     },{})
 }
 
-// validation
-function validateInputs(inputQuerySelector,submitData){
-    let formData = getNodeValues(inputQuerySelector)
-    let errors = 0; //count the number or validation errors found
+// Validation of all inputs
+function validateInputs(inputsQuerySelector,submitData){
+    let formData = getNodeValues(inputsQuerySelector)
+    let errors = 0; //count the number or validation errors found (see line )
     
     // *** 1. ---- name
     if(formData.name != '' && formData.name != null ){
@@ -60,47 +68,44 @@ function validateInputs(inputQuerySelector,submitData){
     if(submitData === false || errors > 0){
         console.log('This data shall not be submitted.');
     } else {
-        console.log('Success - data can be submitted!',formData);
-        
+        console.log('Success - data can be submitted!',formData); 
     }
     
 }
 
-// This method is called for each error to decide whether to show the error message or not
+// This method is called for each error to decide whether to show the error message (and what to show) or not
 function handleErrorMessage(inputSelector,action,message){
     if(action != 'add' && action != 'remove'){
-        console.warn('Warning: handleErrorMessage only accepts "add" or "remove" as arguments.');
+        console.warn('Warning: handleErrorMessage only accepts "add" or "remove" as arguments.'); //development warning
         return
     }
+    
+    //get an input element and its text error element
     let inputNode = document.querySelector(inputSelector)
-    let textErrorNode = inputNode.parentNode.querySelector('.error-message span') //this will get the span that containts the error message
+    let textErrorNode = inputNode.parentNode.querySelector('.error-message span')
 
     if(message){
         textErrorNode.innerText = message;
     } else {
-        textErrorNode.innerText = 'Error' // ------------------------------- change this later
+        textErrorNode.innerText = 'Error' //if no error message is specified
     }
+    //'add' or 'remove' the class (submited in the action variable) which will toggle the error
     inputNode.classList[action]('show-error')
-    
-    // console.log(inputSelector, action);
 }
 
 
 //adding on focus and blur listeners for all inputs - called on click of the form submit button 
-function addInput_EventListeners(inputQuerySelector){
-    let inputs =  document.querySelectorAll(inputQuerySelector)
+function addInput_EventListeners(inputsQuerySelector){
+    let inputs =  document.querySelectorAll(inputsQuerySelector)
 
     inputs.forEach(input=>{
         input.addEventListener('focus',function(){
-            this.classList.remove('show-error') //on input focus, hide the error
+            this.classList.remove('show-error') //when a user is typing, hide the error
         })
 
         input.addEventListener('blur',function(){
-                validateInputs(inputQuerySelector,false) //on blur, re-validate all the inputs - without submitting (false flag)
+                validateInputs(inputsQuerySelector,false) //on blur, re-validate all the inputs - without submitting (false flag)
         })
     })
 }
-
-//added for testing
-// validateInputs('.form input',true)
 
