@@ -1,13 +1,10 @@
   
   .container {
     display: flex;
-    // align-items: center;
     justify-content: center;
-
     max-width: 1440px;
-    //box-sizing: border-box;
     margin: 0 auto; //keep an eye on this
-    padding: 60px 11%; //11% is 165px when the screen is 1440px
+    padding: 110px 11%; //11% is 165px when the screen is 1440px
     
     section.text, section.form-container {
         flex:1;
@@ -18,11 +15,13 @@
             font-size: 50px;
             line-height: 55px;
             margin-top: 170px;
+            // font-weight: 700; //not necessary since it's a h1
         }
         
         p {
             font-size: 16px;
             line-height: 26px;
+            font-weight: 500;
         }
     }
     
@@ -35,6 +34,7 @@
         .offer {
             background-color: $color-purple;
             color:#fff;
+            font-weight: 400;
             font-size: 15px;
             line-height: 26px;
             padding: 14px 31px;
@@ -54,6 +54,7 @@
                 padding: 14px 31px;
                 box-sizing: border-box;
                 border-radius: 5px;
+                font-weight: 600;
             }
             
             .input-container {
@@ -63,14 +64,15 @@
                 input {
                     font-size: 14px;
                     line-height: 26px;
-                    color:lighten($color-dark-gray,15%);
+                    color:$color-dark-gray;
                     border: 1px solid $input-border-color;
+                    letter-spacing: 0.25px;
 
                     &::placeholder,
                     &::-webkit-input-placeholder {
                         opacity: 1;
                         font-weight: 700;
-                        color:$color-dark-gray;
+                        color:lighten($color-dark-gray,15%);;
                     }
                     
                     &:-webkit-autofill,
@@ -105,6 +107,8 @@
                     text-align: right;
                     line-height: auto;
                     padding-top: 2px;
+                    font-weight: 500;
+                    font-style: italic;
                 }
             }
             
@@ -117,6 +121,7 @@
                 // filter:drop-shadow(0 8px 0 darken($color-green,10%));
                 // box-shadow: initial 10px 20px 10px #333;
                 box-shadow: 0px 5px darken($color-green, 5%);
+                font-weight: 600;
                 
                 &:hover {
                     padding: 14px 31px;
@@ -128,6 +133,7 @@
             .terms {
                 font-size:11px;
                 line-height: 26px;
+                font-weight: 500;
             }
         }
     }
