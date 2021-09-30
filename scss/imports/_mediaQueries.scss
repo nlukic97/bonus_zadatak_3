@@ -25,6 +25,17 @@
 
             .form {
                 padding: 24px;
+
+                .input-container {
+                    input {
+                        padding: 14px 15px;
+
+                        &.show-error {
+                            // background: url('../images/icon-error.svg') no-repeat center right 20px/contain;
+                            background-position: center right 14px;
+                        }
+                    }
+                }
             }
         }
     }

@@ -9,9 +9,9 @@ function getNodeValues(inputQuerySelector){
     
     return Object.keys(inputs).reduce(function(acc,key){
         let objKey = inputs[key].getAttribute('name')
-        let value = inputs[key].value
+        let objValue = inputs[key].value
         
-        acc[objKey] = value
+        acc[objKey] = objValue
         return acc
     },{})
 }
@@ -21,7 +21,7 @@ function validateInputs(inputQuerySelector,submitData){
     let formData = getNodeValues(inputQuerySelector)
     let errors = 0; //count the number or validation errors found
     
-    // *** name
+    // *** 1. ---- name
     if(formData.name != '' && formData.name != null ){
         handleErrorMessage('#name','remove')
     } else {
@@ -29,7 +29,7 @@ function validateInputs(inputQuerySelector,submitData){
         errors++
     } 
     
-    // *** last name   
+    // *** 2. ---- last name   
     if(formData.lastname != '' && formData.lastname != null){
         handleErrorMessage('#lastname','remove')
     } else {
@@ -37,10 +37,8 @@ function validateInputs(inputQuerySelector,submitData){
         errors++
     }
     
-    // *** email
+    // *** 3. ---- email
     let emailRegExp = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,'g')
-    
-
     if(formData.email == '' && formData.email != null ){
         handleErrorMessage('#email','add','Email cannot be empty')
         errors++
@@ -51,7 +49,7 @@ function validateInputs(inputQuerySelector,submitData){
         handleErrorMessage('#email','remove')
     }
     
-    // *** password
+    // *** 4. ---- password
     if(formData.password != '' && formData.password != null ){
         handleErrorMessage('#password','remove')
     } else {

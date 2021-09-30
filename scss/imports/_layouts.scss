@@ -61,12 +61,14 @@
                 margin-bottom:20px;
 
                 input {
+                    font-size: 14px;
                     line-height: 26px;
                     color:lighten($color-dark-gray,15%);
                     border: 1px solid $input-border-color;
 
                     &::placeholder,
                     &::-webkit-input-placeholder {
+                        opacity: 1;
                         font-weight: 700;
                         color:$color-dark-gray;
                     }
@@ -85,6 +87,10 @@
                         background: url('../images/icon-error.svg') no-repeat center right 20px/contain;
                         background-size: 24px 24px;
                         border: 1px solid $color-red;
+
+                        &::placeholder {
+                            opacity: 0; //placeholder will be hidden when error message is present after submission. It will be returned when the user focuses on the input again
+                        }
 
                         ~ .error-message {
                             display: block;
