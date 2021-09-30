@@ -14,7 +14,7 @@ body {
   justify-content: center;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 125px 11% 0;
+  padding: 60px 11%;
 }
 .container section.text, .container section.form-container {
   flex: 1;
@@ -38,6 +38,7 @@ body {
   color: #fff;
   padding: 14px 31px;
   margin: 0 0 20px 0;
+  filter: drop-shadow(0 8px 0 rgba(0, 0, 0, 0.137));
 }
 .container section.form-container .form {
   padding: 40px;
@@ -53,23 +54,38 @@ body {
 }
 .container section.form-container .form .input-container {
   position: relative;
+  margin-bottom: 20px;
 }
 .container section.form-container .form .input-container input {
   line-height: 26px;
-  margin-bottom: 20px;
+  color: #615d72;
+}
+.container section.form-container .form .input-container input::placeholder, .container section.form-container .form .input-container input::-webkit-input-placeholder {
+  font-weight: 700;
+  color: #3D3B48;
+}
+.container section.form-container .form .input-container input:-webkit-autofill, .container section.form-container .form .input-container input:-webkit-autofill:hover, .container section.form-container .form .input-container input:-webkit-autofill:focus {
+  color: #3D3B48;
+  -webkit-text-fill-color: #3D3B48;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  transition: background-color 5000s ease-in-out 0s;
+}
+.container section.form-container .form .input-container input.show-error {
+  background: url("../images/icon-error.svg") no-repeat center right 20px/contain;
+  background-size: 24px 24px;
+  border: 1px solid #FF7979;
 }
 .container section.form-container .form .input-container input.show-error ~ .error-message {
   display: block;
 }
 .container section.form-container .form .input-container .error-message {
-  position: absolute;
-  height: 26px;
-  top: 16px;
-  right: 0;
-  padding-right: 40px;
   display: none;
-  background: url("../images/icon-error.svg") no-repeat center right 10px/contain;
-  background-size: 23px 23px;
+  position: inherit;
+  font-size: 11px;
+  text-align: right;
+  line-height: auto;
+  padding-top: 2px;
 }
 .container section.form-container .form button {
   text-transform: uppercase;
@@ -77,6 +93,7 @@ body {
   color: #fff;
   margin-bottom: 10px;
   border: none;
+  box-shadow: 0px 5px #30bb7e;
 }
 .container section.form-container .form button:hover {
   padding: 14px 31px;

@@ -6,7 +6,7 @@
     max-width: 1440px;
     //box-sizing: border-box;
     margin: 0 auto; //keep an eye on this
-    padding: 125px 11% 0; //11% is 165px when the screen is 1440px
+    padding: 60px 11%; //11% is 165px when the screen is 1440px
     
     section.text, section.form-container {
         flex:1;
@@ -35,6 +35,7 @@
             color:#fff;
             padding: 14px 31px;
             margin: 0 0 20px 0;
+            filter:drop-shadow(0 8px 0 darken(rgba(0, 0, 0, 0.137),10%));
         }
         
         .form {
@@ -53,24 +54,46 @@
             
             .input-container {
                 position: relative;
+                margin-bottom:20px;
                 input {
                     line-height: 26px;
-                    margin-bottom:20px;
+                    color:lighten($color-dark-gray,15%);
+                    //font: semi-bold
 
-                    &.show-error ~ .error-message {
-                        display: block;
+                    &::placeholder,
+                    &::-webkit-input-placeholder {
+                        font-weight: 700;
+                        color:$color-dark-gray;
+                    }
+                    
+                    &:-webkit-autofill,
+                    &:-webkit-autofill:hover, 
+                    &:-webkit-autofill:focus {
+                        color:$color-dark-gray;
+                        -webkit-text-fill-color: $color-dark-gray;
+                        box-shadow:none;
+                        -webkit-box-shadow: none;
+                        transition: background-color 5000s ease-in-out 0s;
+                    }
+                    
+                    &.show-error {
+                        background: url('../images/icon-error.svg') no-repeat center right 20px/contain;
+                        background-size: 24px 24px;
+                        border: 1px solid $color-red;
+
+                        ~ .error-message {
+                            display: block;
+                        }
                     }
                 }
-
+                
                 .error-message {
-                    position: absolute;
-                    height: 26px;
-                    top: 16px;
-                    right: 0;
-                    padding-right: 40px;
                     display: none;
-                    background: url('../images/icon-error.svg') no-repeat center right 10px/contain;
-                    background-size: 23px 23px;
+                    position: inherit;
+                    font-size: 11px;
+                    text-align: right;
+                    line-height: auto;
+                    padding-top: 2px;
                 }
             }
             
@@ -80,6 +103,9 @@
                 color:#fff;
                 margin-bottom:10px;
                 border: none;
+                // filter:drop-shadow(0 8px 0 darken($color-green,10%));
+                // box-shadow: initial 10px 20px 10px #333;
+                box-shadow: 0px 5px darken($color-green, 5%);
                 
                 &:hover {
                     padding: 14px 31px;

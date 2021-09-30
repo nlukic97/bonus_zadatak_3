@@ -25,7 +25,7 @@ function validateInputs(inputQuerySelector,submitData){
     if(formData.name != '' && formData.name != null ){
         handleErrorMessage('#name','remove')
     } else {
-        handleErrorMessage('#name','add','Requiered')
+        handleErrorMessage('#name','add','First Name cannot be empty')
         errors++
     } 
     
@@ -33,7 +33,7 @@ function validateInputs(inputQuerySelector,submitData){
     if(formData.lastname != '' && formData.lastname != null){
         handleErrorMessage('#lastname','remove')
     } else {
-        handleErrorMessage('#lastname','add','Requiered')
+        handleErrorMessage('#lastname','add','Last Name cannot be empty')
         errors++
     }
     
@@ -42,10 +42,10 @@ function validateInputs(inputQuerySelector,submitData){
     
 
     if(formData.email == '' && formData.email != null ){
-        handleErrorMessage('#email','add','Requiered')
+        handleErrorMessage('#email','add','Email cannot be empty')
         errors++
     } else if(emailRegExp.test(formData.email) === false){
-        handleErrorMessage('#email','add','Invalid Email Address')
+        handleErrorMessage('#email','add','Looks like this is not an email')
         errors++
     } else {
         handleErrorMessage('#email','remove')
@@ -55,7 +55,7 @@ function validateInputs(inputQuerySelector,submitData){
     if(formData.password != '' && formData.password != null ){
         handleErrorMessage('#password','remove')
     } else {
-        handleErrorMessage('#password','add','Requiered')
+        handleErrorMessage('#password','add','Password cannot be empty')
         errors++
     }
 
@@ -102,4 +102,7 @@ function addInput_EventListeners(inputQuerySelector){
         })
     })
 }
+
+//added for testing
+// validateInputs('.form input',true)
 
