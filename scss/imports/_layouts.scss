@@ -1,8 +1,9 @@
   
   .container {
     display: flex;
-    align-items: center;
+    // align-items: center;
     justify-content: center;
+
     max-width: 1440px;
     //box-sizing: border-box;
     margin: 0 auto; //keep an eye on this
@@ -16,6 +17,7 @@
         h1 {
             font-size: 50px;
             line-height: 55px;
+            margin-top: 170px;
         }
         
         p {
@@ -33,6 +35,8 @@
         .offer {
             background-color: $color-purple;
             color:#fff;
+            font-size: 15px;
+            line-height: 26px;
             padding: 14px 31px;
             margin: 0 0 20px 0;
             filter:drop-shadow(0 8px 0 darken(rgba(0, 0, 0, 0.137),10%));
@@ -55,10 +59,11 @@
             .input-container {
                 position: relative;
                 margin-bottom:20px;
+
                 input {
                     line-height: 26px;
                     color:lighten($color-dark-gray,15%);
-                    //font: semi-bold
+                    border: 1px solid $input-border-color;
 
                     &::placeholder,
                     &::-webkit-input-placeholder {
