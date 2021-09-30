@@ -14,14 +14,19 @@ body {
   max-width: 1440px;
   margin: 0 auto;
   padding: 110px 11%;
+  box-sizing: border-box;
 }
 .container section.text, .container section.form-container {
   flex: 1;
+}
+.container section.text {
+  padding-right: 30px;
 }
 .container section.text h1 {
   font-size: 50px;
   line-height: 55px;
   margin-top: 170px;
+  margin-bottom: 25px;
 }
 .container section.text p {
   font-size: 16px;
@@ -42,7 +47,6 @@ body {
   line-height: 26px;
   padding: 14px 31px;
   margin: 0 0 20px 0;
-  filter: drop-shadow(0 8px 0 rgba(0, 0, 0, 0.137));
 }
 .container section.form-container .form {
   padding: 40px;
@@ -140,6 +144,10 @@ body {
   font-weight: 700;
 }
 
+.dark-shadow {
+  filter: drop-shadow(0 8px 0 rgba(0, 0, 0, 0.137));
+}
+
 @media screen and (max-width: 859px) {
   .container {
     flex-direction: column;
@@ -148,7 +156,6 @@ body {
   }
   .container section.text h1 {
     margin-top: 0;
-    margin-bottom: 25px;
     font-size: 28px;
     line-height: 36px;
     text-align: center;
