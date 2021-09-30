@@ -1,12 +1,10 @@
   
   .container {
     display: flex;
-    align-items: center;
     justify-content: center;
     max-width: 1440px;
-    //box-sizing: border-box;
     margin: 0 auto; //keep an eye on this
-    padding: 60px 11%; //11% is 165px when the screen is 1440px
+    padding: 110px 11%; //11% is 165px when the screen is 1440px
     
     section.text, section.form-container {
         flex:1;
@@ -16,11 +14,14 @@
         h1 {
             font-size: 50px;
             line-height: 55px;
+            margin-top: 170px;
+            // font-weight: 700; //not necessary since it's a h1
         }
         
         p {
             font-size: 16px;
             line-height: 26px;
+            font-weight: 500;
         }
     }
     
@@ -33,6 +34,9 @@
         .offer {
             background-color: $color-purple;
             color:#fff;
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 26px;
             padding: 14px 31px;
             margin: 0 0 20px 0;
             filter:drop-shadow(0 8px 0 darken(rgba(0, 0, 0, 0.137),10%));
@@ -50,20 +54,25 @@
                 padding: 14px 31px;
                 box-sizing: border-box;
                 border-radius: 5px;
+                font-weight: 600;
             }
             
             .input-container {
                 position: relative;
                 margin-bottom:20px;
+
                 input {
+                    font-size: 14px;
                     line-height: 26px;
-                    color:lighten($color-dark-gray,15%);
-                    //font: semi-bold
+                    color:$color-dark-gray;
+                    border: 1px solid $input-border-color;
+                    letter-spacing: 0.25px;
 
                     &::placeholder,
                     &::-webkit-input-placeholder {
+                        opacity: 1;
                         font-weight: 700;
-                        color:$color-dark-gray;
+                        color:lighten($color-dark-gray,15%);;
                     }
                     
                     &:-webkit-autofill,
@@ -81,6 +90,10 @@
                         background-size: 24px 24px;
                         border: 1px solid $color-red;
 
+                        &::placeholder {
+                            opacity: 0; //placeholder will be hidden when error message is present after submission. It will be returned when the user focuses on the input again
+                        }
+
                         ~ .error-message {
                             display: block;
                         }
@@ -94,6 +107,8 @@
                     text-align: right;
                     line-height: auto;
                     padding-top: 2px;
+                    font-weight: 500;
+                    font-style: italic;
                 }
             }
             
@@ -106,6 +121,7 @@
                 // filter:drop-shadow(0 8px 0 darken($color-green,10%));
                 // box-shadow: initial 10px 20px 10px #333;
                 box-shadow: 0px 5px darken($color-green, 5%);
+                font-weight: 600;
                 
                 &:hover {
                     padding: 14px 31px;
@@ -117,6 +133,7 @@
             .terms {
                 font-size:11px;
                 line-height: 26px;
+                font-weight: 500;
             }
         }
     }
