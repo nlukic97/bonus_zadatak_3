@@ -8,6 +8,10 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+a {
+  text-decoration: none;
+}
+
 .container {
   display: flex;
   justify-content: center;
@@ -146,6 +150,14 @@ body {
 
 .dark-shadow {
   filter: drop-shadow(0 8px 0 rgba(0, 0, 0, 0.137));
+}
+
+.btn-red {
+  color: #FF7979;
+}
+.btn-red:hover {
+  cursor: pointer;
+  color: #ff9393;
 }
 
 @media screen and (max-width: 859px) {

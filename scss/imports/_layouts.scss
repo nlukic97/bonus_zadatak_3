@@ -165,3 +165,11 @@
 .dark-shadow {
     filter:drop-shadow(0 8px 0 darken(rgba(0, 0, 0, 0.137),10%));
 }
+
+.btn-red {
+    color:$color-red;
+    &:hover {
+        cursor: pointer;
+        color: lighten($color-red,5%);
+    }
+}
