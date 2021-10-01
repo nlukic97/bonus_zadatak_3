@@ -2,14 +2,76 @@ var inputListenersSet = false;
 
 document.getElementById('submit-btn').addEventListener('click',function(){
 
-    //we only want to set the input listeners once upon the first form submission
-    if(inputListenersSet === false){ 
-        addInput_EventListeners('.form input')
-        inputListenersSet = true;
-    }
-
+    if (inputListenersSet === false) addInput_EventListeners('.form input'),inputListenersSet = true; //we only want to set the input listeners once upon the first form submission
     validateInputs('.form input',true) //validate inputs, and submit - 'true' flag
 })
+
+// Validation of all inputs
+function validateInputs(inputsQuerySelector,submitFlag){
+    let formData = getNodeValues(inputsQuerySelector)
+    let errors = 0; //count the number or validation errors found (see line )
+    
+    // *** 1. ---- name
+    if (formData.name != '' && formData.name != null ){
+        hideErrorMessage('#name')
+    } else {
+        showErrorMessage('#name','First Name cannot be empty')
+        errors++
+    }
+    
+    
+    // *** 2. ---- last name   
+    if(formData.lastname != '' && formData.lastname != null){
+        hideErrorMessage('#lastname')
+    } else {
+        showErrorMessage('#lastname','Last Name cannot be empty')
+        errors++
+    }
+
+    
+    // *** 3. ---- email
+    let emailRegExp = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,'g')
+    if(formData.email == '' && formData.email != null ){
+        showErrorMessage('#email','Email cannot be empty')
+        errors++
+    } else if(emailRegExp.test(formData.email) === false){
+        showErrorMessage('#email','Looks like this is not an email')
+        errors++
+    } else {
+        hideErrorMessage('#email')
+    }
+
+    
+    // *** 4. ---- password
+    if(formData.password != '' && formData.password != null ){
+        hideErrorMessage('#password')
+    } else {
+        showErrorMessage('#password','Password cannot be empty')
+        errors++
+    }
+
+
+    if(submitFlag !== false && errors <= 0){
+        console.log('Success - data can be submitted!',formData)
+    } else {
+        console.log('This data shall not be submitted.')
+    }
+    
+}
+
+// handling the display of error messages
+function showErrorMessage(inputSelector, message){
+    let inputNode = document.querySelector(inputSelector)
+    let textErrorNode = inputNode.parentNode.querySelector('.error-message span')
+
+    textErrorNode.innerText = (message) ? message : 'Error';
+    inputNode.classList.add('show-error')
+}
+
+function hideErrorMessage(inputSelector){
+    let inputNode = document.querySelector(inputSelector)
+    inputNode.classList.remove('show-error')
+}
 
 //return object with input name is the key, and input value as the value
 function getNodeValues(inputsQuerySelector){
@@ -24,87 +86,22 @@ function getNodeValues(inputsQuerySelector){
     },{})
 }
 
-// Validation of all inputs
-function validateInputs(inputsQuerySelector,submitData){
-    let formData = getNodeValues(inputsQuerySelector)
-    let errors = 0; //count the number or validation errors found (see line )
-    
-    // *** 1. ---- name
-    if(formData.name != '' && formData.name != null ){
-        handleErrorMessage('#name','remove')
-    } else {
-        handleErrorMessage('#name','add','First Name cannot be empty')
-        errors++
-    } 
-    
-    // *** 2. ---- last name   
-    if(formData.lastname != '' && formData.lastname != null){
-        handleErrorMessage('#lastname','remove')
-    } else {
-        handleErrorMessage('#lastname','add','Last Name cannot be empty')
-        errors++
-    }
-    
-    // *** 3. ---- email
-    let emailRegExp = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,'g')
-    if(formData.email == '' && formData.email != null ){
-        handleErrorMessage('#email','add','Email cannot be empty')
-        errors++
-    } else if(emailRegExp.test(formData.email) === false){
-        handleErrorMessage('#email','add','Looks like this is not an email')
-        errors++
-    } else {
-        handleErrorMessage('#email','remove')
-    }
-    
-    // *** 4. ---- password
-    if(formData.password != '' && formData.password != null ){
-        handleErrorMessage('#password','remove')
-    } else {
-        handleErrorMessage('#password','add','Password cannot be empty')
-        errors++
-    }
-
-    if(submitData === false || errors > 0){
-        console.log('This data shall not be submitted.');
-    } else {
-        console.log('Success - data can be submitted!',formData); 
-    }
-    
-}
-
-// This method is called for each error to decide whether to show the error message (and what to show) or not
-function handleErrorMessage(inputSelector,action,message){
-    if(action != 'add' && action != 'remove'){
-        console.warn('Warning: handleErrorMessage only accepts "add" or "remove" as arguments.'); //development warning
-        return
-    }
-    
-    //get an input element and its text error element
-    let inputNode = document.querySelector(inputSelector)
-    let textErrorNode = inputNode.parentNode.querySelector('.error-message span')
-
-    if(message){
-        textErrorNode.innerText = message;
-    } else {
-        textErrorNode.innerText = 'Error' //if no error message is specified
-    }
-    //'add' or 'remove' the class (submited in the action variable) which will toggle the error
-    inputNode.classList[action]('show-error')
-}
-
 
 //adding on focus and blur listeners for all inputs - called on click of the form submit button 
 function addInput_EventListeners(inputsQuerySelector){
     let inputs =  document.querySelectorAll(inputsQuerySelector)
 
     inputs.forEach(input=>{
+        
+        //Better usabiliy without this listener
+        /**
         input.addEventListener('focus',function(){
             this.classList.remove('show-error') //when a user is typing, hide the error
         })
+        */
 
         input.addEventListener('blur',function(){
-                validateInputs(inputsQuerySelector,false) //on blur, re-validate all the inputs - without submitting (false flag)
+            validateInputs(inputsQuerySelector,false) //on blur, re-validate all the inputs - without submitting (false flag)
         })
     })
 }
