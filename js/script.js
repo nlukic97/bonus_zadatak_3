@@ -1,7 +1,6 @@
 var inputListenersSet = false;
 
 document.getElementById('submit-btn').addEventListener('click',function(){
-
     if (inputListenersSet === false) addInput_EventListeners('.form input'),inputListenersSet = true; //we only want to set the input listeners once upon the first form submission
     validateInputs('.form input',true) //validate inputs, and submit - 'true' flag
 })
@@ -9,9 +8,9 @@ document.getElementById('submit-btn').addEventListener('click',function(){
 // Validation of all inputs
 function validateInputs(inputsQuerySelector,submitFlag){
     let formData = getNodeValues(inputsQuerySelector)
-    let errors = 0; //count the number or validation errors found (see line )
+    let errors = 0; //count the number or validation errors found (see line 54)
     
-    // *** 1. ---- name
+    // *** 1. ---- name validation check
     if (formData.name != '' && formData.name != null ){
         hideErrorMessage('#name')
     } else {
@@ -20,7 +19,7 @@ function validateInputs(inputsQuerySelector,submitFlag){
     }
     
     
-    // *** 2. ---- last name   
+    // *** 2. ---- lastname validation check
     if(formData.lastname != '' && formData.lastname != null){
         hideErrorMessage('#lastname')
     } else {
@@ -29,7 +28,7 @@ function validateInputs(inputsQuerySelector,submitFlag){
     }
 
     
-    // *** 3. ---- email
+    // *** 3. ---- email validation check
     let emailRegExp = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,'g')
     if(formData.email == '' && formData.email != null ){
         showErrorMessage('#email','Email cannot be empty')
@@ -42,7 +41,7 @@ function validateInputs(inputsQuerySelector,submitFlag){
     }
 
     
-    // *** 4. ---- password
+    // *** 4. ---- password validation check
     if(formData.password != '' && formData.password != null ){
         hideErrorMessage('#password')
     } else {
@@ -59,7 +58,8 @@ function validateInputs(inputsQuerySelector,submitFlag){
     
 }
 
-// handling the display of error messages
+
+/** handling the display of error messages */
 function showErrorMessage(inputSelector, message){
     let inputNode = document.querySelector(inputSelector)
     let textErrorNode = inputNode.parentNode.querySelector('.error-message span')
@@ -73,7 +73,8 @@ function hideErrorMessage(inputSelector){
     inputNode.classList.remove('show-error')
 }
 
-//return object with input name is the key, and input value as the value
+
+//return object where the input's name is the key, and it's value is the value
 function getNodeValues(inputsQuerySelector){
     let inputs =  document.querySelectorAll(inputsQuerySelector)
     
@@ -92,14 +93,6 @@ function addInput_EventListeners(inputsQuerySelector){
     let inputs =  document.querySelectorAll(inputsQuerySelector)
 
     inputs.forEach(input=>{
-        
-        //Better usabiliy without this listener
-        /**
-        input.addEventListener('focus',function(){
-            this.classList.remove('show-error') //when a user is typing, hide the error
-        })
-        */
-
         input.addEventListener('blur',function(){
             validateInputs(inputsQuerySelector,false) //on blur, re-validate all the inputs - without submitting (false flag)
         })
